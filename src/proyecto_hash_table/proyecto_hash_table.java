@@ -5,6 +5,8 @@
  */
 package proyecto_hash_table;
 
+import txt.TxtReader;
+
 /**
  *
  * @author luism
@@ -15,7 +17,6 @@ public class proyecto_hash_table {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
     }
     
 }
