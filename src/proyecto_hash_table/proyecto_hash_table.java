@@ -1,22 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyecto_hash_table;
 
 import txt.TxtReader;
+import classes.HashTable;
 
-/**
- *
- * @author luism
- */
 public class proyecto_hash_table {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
+        HashTable hs = new HashTable(10007);
+        hs.hashFunction("Hola");
+        hs.hashFunction("Hola");
+        hs.hashFunction("Como");
+        hs.hashFunction("Estas");
+        hs.hashFunction("Hello");
+        hs.hashFunction("Jose");
+        hs.hashFunction("Maria");
+        hs.hashFunction("Test");
+        hs.hashFunction("Hola");
+        hs.hashFunction("Como");
+        hs.printTable();
+        
     }
     
 }
