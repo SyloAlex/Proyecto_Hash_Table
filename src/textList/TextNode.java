@@ -10,7 +10,7 @@ package textList;
  * @author luism
  */
 public class TextNode {
-    String text;
+    public String text;
     String title;
     TextNode next;
 }

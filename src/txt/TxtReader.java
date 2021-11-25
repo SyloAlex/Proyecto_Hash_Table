@@ -43,8 +43,8 @@ public class TxtReader {
                 
                 
                 String title = JOptionPane.showInputDialog("Ingrese titulo del texto: ");
-                System.out.println(title);
-                tl.insertAtTheEnd(text, title);
+                
+                tl.insertAtTheEnd(text.substring(0, text.length()-1), title);
                 
                 if (text != null){
                     text = text.replaceAll(",", "");

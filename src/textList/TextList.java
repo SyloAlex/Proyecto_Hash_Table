@@ -55,4 +55,35 @@ public class TextList {
         }
         return str;
     }
+    
+    public String getTitles(){
+        TextNode aux = new TextNode();
+        aux = first;
+        
+        String titleList = "";
+        
+        while(aux != null){
+            if (aux.next != null){
+                titleList += aux.title + ",";
+                aux = aux.next;   
+            } else{
+                titleList += aux.title;
+                aux = aux.next;
+            }
+        }   
+        return titleList;
+    }
+    
+    public TextNode search(String title){
+        TextNode aux = new TextNode();
+        aux = first;
+        while(aux != null){
+            if (aux.title.equals(title)){
+                 return aux;
+            } else {
+                aux = aux.next;
+            }
+        }
+        return null;
+    }
 }

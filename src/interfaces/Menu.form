@@ -149,9 +149,12 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Verificar un texto"/>
+        <Property name="text" type="java.lang.String" value="Verificar textos"/>
         <Property name="borderPainted" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verifyATextActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -102,8 +102,13 @@ public class Menu extends javax.swing.JFrame {
         });
 
         verifyAText.setBackground(new java.awt.Color(255, 255, 255));
-        verifyAText.setText("Verificar un texto");
+        verifyAText.setText("Verificar textos");
         verifyAText.setBorderPainted(false);
+        verifyAText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verifyATextActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,6 +150,10 @@ public class Menu extends javax.swing.JFrame {
     private void ShowRepetitionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowRepetitionsActionPerformed
         new ShowHashTable(hashTable).setVisible(true);
     }//GEN-LAST:event_ShowRepetitionsActionPerformed
+
+    private void verifyATextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyATextActionPerformed
+        new TextVerification(textList).setVisible(true);
+    }//GEN-LAST:event_verifyATextActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ShowRepetitions;
