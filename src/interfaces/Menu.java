@@ -136,11 +136,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void addTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTextActionPerformed
         TxtReader txtReader = new TxtReader();
-        txtReader.openFile();
-        
-       for (int i = 0; i < (txtReader.wordList.length); i++){
-           hashTable.hashFunction(txtReader.wordList[i]);
-       }
+        txtReader.openFile(hashTable);
     }//GEN-LAST:event_addTextActionPerformed
 
     private void ShowRepetitionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowRepetitionsActionPerformed

@@ -31,7 +31,7 @@ public class HashTable {
                             ". Count: " + aux.getCount()+ "\n";
                     aux = aux.getNext();
                 }
-                str += ">>>>>>>>>>>>>>>>>>>\n";
+                str += ">>>>>>>>>>>>>>>>>>>\n\n";
             }
         }
         return str;
