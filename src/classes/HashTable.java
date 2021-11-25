@@ -19,20 +19,22 @@ public class HashTable {
         }
     }
     
-    public void printTable(){
+    public String printTable(){
+        String str = "";
         for (int i = 0; i < this.size; i++){
             HashNode aux = this.table[i];
             if (aux != null){
-                System.out.println("Position: " + i + "\n" + 
-                        "------------------");
+                str+= "Position: " + i + "\n" + 
+                        "------------------\n";
                 while (aux != null){
-                    System.out.println("Word: " + aux.getWord() + 
-                            ". Count: " + aux.getCount());
+                    str += "Word: " + aux.getWord() + 
+                            ". Count: " + aux.getCount()+ "\n";
                     aux = aux.getNext();
                 }
-                System.out.println(">>>>>>>>>>>>>>>>>>>");
+                str += ">>>>>>>>>>>>>>>>>>>\n";
             }
         }
+        return str;
     }
     
     public int hashing(String word){
