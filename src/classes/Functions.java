@@ -13,10 +13,13 @@ public class Functions {
         
         private HashTable table;
         private SimpleList top5;
+        private KarpList karpList;
         
-        public TableAndList(HashTable table, SimpleList top5){
+        public TableAndList(HashTable table, SimpleList top5, 
+                KarpList karpList){
             this.table = table;
             this.top5 = top5;
+            this.karpList = karpList;
         }
 
         public HashTable getTable() {
@@ -34,10 +37,19 @@ public class Functions {
         public void setTop5(SimpleList top5) {
             this.top5 = top5;
         }
+
+        public KarpList getKarpList() {
+            return karpList;
+        }
+
+        public void setKarpList(KarpList karpList) {
+            this.karpList = karpList;
+        }
         
     }
     
-    public TableAndList readTXT(String TXTpath, HashTable hs, SimpleList top5){
+    public TableAndList readTXT(String TXTpath, HashTable hs, SimpleList top5, 
+            KarpList karpList){
         String txt = "";
         String line;
         File file = new File(TXTpath);
@@ -50,6 +62,9 @@ public class Functions {
                         txt += line + "\n";
                     }
                 }
+                KarpNode txtNode = new KarpNode(txt);
+                txtNode.setTitle("Texto #" + (karpList.getSize() + 1));
+                karpList.addLast(txtNode);
                 String[] txtInfo = txt.split("\n");
                 for (int i = 0; i < txtInfo.length; i++){
                     String[] txtWords = txtInfo[i].split(" ");
@@ -67,7 +82,7 @@ public class Functions {
                     }
                 }
             }
-            TableAndList tl = new TableAndList(hs, top5);
+            TableAndList tl = new TableAndList(hs, top5, karpList);
             return tl;
         }catch (Exception e){
             return null;
