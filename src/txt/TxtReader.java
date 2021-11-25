@@ -5,6 +5,7 @@
  */
 package txt;
 
+import classes.HashTable;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -18,11 +19,10 @@ import javax.swing.JOptionPane;
  * @author luism
  */
 public class TxtReader {
-    public String [] wordList;
-    public String originalText;
     
-    public void openFile() {
+    public void openFile(HashTable hs) {
         String aux = "";
+        String line;
     
         try {
             JFileChooser file = new JFileChooser();
@@ -33,23 +33,36 @@ public class TxtReader {
             if (open != null) {
                 FileReader files = new FileReader(open);
                 BufferedReader read = new BufferedReader(files);
-                aux = read.readLine();
+                
+                while ((line = read.readLine()) != null){
+                    if (!line.isEmpty()){
+                        aux += line + " ";
+                    }
+                }
                 System.out.println(aux);
                 
                 if (aux != null){
-                    originalText = aux;
                     aux = aux.replaceAll(",", "");
                     aux = aux.replaceAll("\\.", "");
+                    aux = aux.replaceAll (" \\) ", "");
+                    aux = aux.replaceAll (" \\( ", "");
+                    aux = aux.replaceAll (" \\[ ", "");
+                    aux = aux.replaceAll (" \\] ", "");
+                    aux = aux.replaceAll (" \\{ ", "");
+                    aux = aux.replaceAll (" \\} ", "");
+                    aux = aux.replaceAll (" \\! ", "");
+                    aux = aux.replaceAll (" \\* ", "");
+                    aux = aux.replaceAll (" \\? ", "");
                     aux = aux.toLowerCase();
                     
-                    wordList = aux.split(" ");
+                    String [] wordList = aux.split(" ");
+                    
+                    for (int i = 0; i < wordList.length; i++){
+                        hs.hashFunction(wordList[i]);
+                    }  
                 }
-                
-                
-                
-                
-                 
-            }
+                    
+            }  
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex + ""
                     + "\nNo se ha encontrado el archivo o el archivo no tiene el formato correspondiente, por lo que se iniciara la aplicación sin informacion previa.",
