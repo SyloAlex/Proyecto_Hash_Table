@@ -47,17 +47,8 @@ public class TxtReader {
                 tl.insertAtTheEnd(text.substring(0, text.length()-1), title);
                 
                 if (text != null){
-                    text = text.replaceAll(",", "");
-                    text = text.replaceAll("\\.", "");
-                    text = text.replaceAll (" \\) ", "");
-                    text = text.replaceAll (" \\( ", "");
-                    text = text.replaceAll (" \\[ ", "");
-                    text = text.replaceAll (" \\] ", "");
-                    text = text.replaceAll (" \\{ ", "");
-                    text = text.replaceAll (" \\} ", "");
-                    text = text.replaceAll (" \\! ", "");
-                    text = text.replaceAll (" \\* ", "");
-                    text = text.replaceAll (" \\? ", "");
+                    text = text.replaceAll("[\\[\\](){\\.,*?!}]", "");
+
                     text = text.toLowerCase();
                     
                     String [] wordList = text.split(" ");

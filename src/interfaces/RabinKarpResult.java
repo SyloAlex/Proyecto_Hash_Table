@@ -19,7 +19,7 @@ public class RabinKarpResult extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         SegmentInfo.setText(segment);
-        originalInfo.setText(text);
+        originalInfo.setText(text );
         SegmentInfo.setLineWrap(true);
         SegmentInfo.setWrapStyleWord(true);
         originalInfo.setLineWrap(true);
