@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import textList.TextList;
 
 /**
  *
@@ -20,8 +21,8 @@ import javax.swing.JOptionPane;
  */
 public class TxtReader {
     
-    public void openFile(HashTable hs) {
-        String aux = "";
+    public void openFile(HashTable hs, TextList tl) {
+        String text = "";
         String line;
     
         try {
@@ -36,26 +37,30 @@ public class TxtReader {
                 
                 while ((line = read.readLine()) != null){
                     if (!line.isEmpty()){
-                        aux += line + " ";
+                        text += line + " ";
                     }
                 }
-                System.out.println(aux);
                 
-                if (aux != null){
-                    aux = aux.replaceAll(",", "");
-                    aux = aux.replaceAll("\\.", "");
-                    aux = aux.replaceAll (" \\) ", "");
-                    aux = aux.replaceAll (" \\( ", "");
-                    aux = aux.replaceAll (" \\[ ", "");
-                    aux = aux.replaceAll (" \\] ", "");
-                    aux = aux.replaceAll (" \\{ ", "");
-                    aux = aux.replaceAll (" \\} ", "");
-                    aux = aux.replaceAll (" \\! ", "");
-                    aux = aux.replaceAll (" \\* ", "");
-                    aux = aux.replaceAll (" \\? ", "");
-                    aux = aux.toLowerCase();
+                
+                String title = JOptionPane.showInputDialog("Ingrese titulo del texto: ");
+                System.out.println(title);
+                tl.insertAtTheEnd(text, title);
+                
+                if (text != null){
+                    text = text.replaceAll(",", "");
+                    text = text.replaceAll("\\.", "");
+                    text = text.replaceAll (" \\) ", "");
+                    text = text.replaceAll (" \\( ", "");
+                    text = text.replaceAll (" \\[ ", "");
+                    text = text.replaceAll (" \\] ", "");
+                    text = text.replaceAll (" \\{ ", "");
+                    text = text.replaceAll (" \\} ", "");
+                    text = text.replaceAll (" \\! ", "");
+                    text = text.replaceAll (" \\* ", "");
+                    text = text.replaceAll (" \\? ", "");
+                    text = text.toLowerCase();
                     
-                    String [] wordList = aux.split(" ");
+                    String [] wordList = text.split(" ");
                     
                     for (int i = 0; i < wordList.length; i++){
                         hs.hashFunction(wordList[i]);

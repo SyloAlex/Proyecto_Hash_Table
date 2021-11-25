@@ -7,6 +7,7 @@ package interfaces;
 
 import classes.HashTable;
 import javax.swing.JOptionPane;
+import textList.TextList;
 import txt.TxtReader;
 
 /**
@@ -16,13 +17,15 @@ import txt.TxtReader;
 public class Menu extends javax.swing.JFrame {
     
     HashTable hashTable;
+    TextList textList;
     /**
      * Creates new form Menu
      */
-    public Menu(HashTable hs) {
+    public Menu(HashTable hs,TextList tl) {
         initComponents();
         setLocationRelativeTo(null);
         hashTable = hs;
+        textList = tl;
     }
 
     /**
@@ -136,7 +139,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void addTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTextActionPerformed
         TxtReader txtReader = new TxtReader();
-        txtReader.openFile(hashTable);
+        txtReader.openFile(hashTable, textList);
     }//GEN-LAST:event_addTextActionPerformed
 
     private void ShowRepetitionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowRepetitionsActionPerformed
