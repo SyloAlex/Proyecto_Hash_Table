@@ -9,8 +9,35 @@ public class Functions {
     public Functions(){
     }
     
-    public HashTable readTXT(String TXTpath){
-        HashTable hs = new HashTable(10007);
+    public class TableAndList {
+        
+        private HashTable table;
+        private SimpleList top5;
+        
+        public TableAndList(HashTable table, SimpleList top5){
+            this.table = table;
+            this.top5 = top5;
+        }
+
+        public HashTable getTable() {
+            return table;
+        }
+
+        public void setTable(HashTable table) {
+            this.table = table;
+        }
+
+        public SimpleList getTop5() {
+            return top5;
+        }
+
+        public void setTop5(SimpleList top5) {
+            this.top5 = top5;
+        }
+        
+    }
+    
+    public TableAndList readTXT(String TXTpath, HashTable hs, SimpleList top5){
         String txt = "";
         String line;
         File file = new File(TXTpath);
@@ -35,14 +62,29 @@ public class Functions {
                             }
                         }
                         word = word.toLowerCase();
-                        hs.hashFunction(word);
+                        HashNode node = hs.hashFunction(word);
+                        top5.addOrdered(node);
                     }
                 }
             }
-            return hs;
+            TableAndList tl = new TableAndList(hs, top5);
+            return tl;
         }catch (Exception e){
             return null;
         }
     }
+    
+//    public SimpleList sortList(SimpleList top5, int size){
+//        SimpleList newTop5 = new SimpleList();
+//        for (int i = 0; i < size; i++){
+//            HashNode test = null;
+//            HashNode aux = top5.getFirst();
+//            for (int j = 0; j < top5.getSize(); j++){
+//                if (test == null){
+//                    
+//                }
+//            }
+//        }
+//    }
     
 }
