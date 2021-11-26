@@ -120,7 +120,7 @@ public class Landing extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextArea2);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("Top 10 palabras:");
+        jLabel3.setText("Top 5 palabras:");
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setText("Verificador de Artículos");
