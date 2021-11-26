@@ -109,4 +109,13 @@ public class KarpList {
         return result;
     }
     
+    public String getTitles(){
+        String result = "";
+        KarpNode aux = this.first;
+        for (int i = 0; i < this.size; i++){
+            result += aux.getTitle() + ",";
+        }
+        return result.substring(0, result.length() - 1);
+    }
+    
 }
