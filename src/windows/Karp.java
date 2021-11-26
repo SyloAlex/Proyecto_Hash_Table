@@ -5,7 +5,9 @@
  */
 package windows;
 
+import classes.KarpNode;
 import classes.RabinKarp;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -84,7 +86,7 @@ public class Karp extends javax.swing.JFrame {
         );
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Ingrese el texto a revisar:");
+        jLabel2.setText("Seleccione el segmento:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Seleccione el texto:");
@@ -174,6 +176,22 @@ public class Karp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
+            String textTitle = this.jList2.getSelectedValue();
+            String segmentTitle = this.jList1.getSelectedValue();
+            String text = this.landingWindow.getKarpList().getText(
+                    textTitle).getText();
+            String segment = this.landingWindow.getKarpList().getText(
+                    segmentTitle).getText();
+            if (text != null && segment != null){
+                RabinKarp rk = new RabinKarp();
+                String rkResult = rk.rabinKarp(text, segment);
+                this.jTextArea3.setText(rkResult);
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(rootPane, "Debe seleccionar el texto "
+                    + "y el segmento que desea verificar");
+        }
 //        if (this.jList1.)
 //        RabinKarp rk = new RabinKarp();
 //        String rkResult = rk.rabinKarp(text, segment)

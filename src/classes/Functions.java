@@ -52,6 +52,7 @@ public class Functions {
     public TableAndList readTXT(String TXTpath, HashTable hs, SimpleList top5, 
             KarpList karpList){
         String txt = "";
+        String karpTxt = "";
         String line;
         File file = new File(TXTpath);
         try{
@@ -61,9 +62,10 @@ public class Functions {
                 while ((line = br.readLine()) != null){
                     if (!line.isEmpty()){
                         txt += line + "\n";
+                        karpTxt += line + " ";
                     }
                 }
-                KarpNode txtNode = new KarpNode(txt);
+                KarpNode txtNode = new KarpNode(karpTxt);
                 String title = JOptionPane.showInputDialog("Ingrese el título "
                         + "del texto:");
                 txtNode.setTitle(title);

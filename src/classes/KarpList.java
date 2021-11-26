@@ -119,4 +119,16 @@ public class KarpList {
         return result.substring(0, result.length() - 1);
     }
     
+    public KarpNode getText(String title){
+        KarpNode aux = this.first;
+        for (int i = 0; i < this.size; i++){
+            if (aux.getTitle().equals(title)){
+                return aux;
+            } else{
+                aux = aux.getNext();
+            }
+        }
+        return null;
+    }
+    
 }
