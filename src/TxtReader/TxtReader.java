@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package txt;
+package TxtReader;
 
-import classes.HashTable;
+import HashTable.HashNode;
+import HashTable.HashTable;
+import HashTable.TableAndList;
+import HashTable.Top5List;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -21,18 +24,13 @@ import textList.TextList;
  */
 public class TxtReader {
     
-    public void openFile(HashTable hs, TextList tl) {
+    public TableAndList openFile(String txtPath, HashTable hashTable, TextList textList, Top5List top5) {
         String text = "";
         String line;
-    
+        File file = new File(txtPath);
         try {
-            JFileChooser file = new JFileChooser();
-
-            file.showOpenDialog(file);
-            File open = file.getSelectedFile();
-
-            if (open != null) {
-                FileReader files = new FileReader(open);
+            if (file.exists()) {
+                FileReader files = new FileReader(file);
                 BufferedReader read = new BufferedReader(files);
                 
                 while ((line = read.readLine()) != null){
@@ -44,7 +42,7 @@ public class TxtReader {
                 
                 String title = JOptionPane.showInputDialog("Ingrese titulo del texto: ");
                 
-                tl.insertAtTheEnd(text.substring(0, text.length()-1), title);
+                textList.insertAtTheEnd(text.substring(0, text.length()-1), title);
                 
                 if (text != null){
                     text = text.replaceAll("[\\[\\](){\\.,*?!}]", "");
@@ -54,16 +52,19 @@ public class TxtReader {
                     String [] wordList = text.split(" ");
                     
                     for (int i = 0; i < wordList.length; i++){
-                        hs.hashFunction(wordList[i]);
+                        HashNode node = hashTable.hashFunction(wordList[i]);
+                        top5.addOrdered(node);
                     }  
                 }
                     
-            }  
+            }
+            TableAndList tableAndList = new TableAndList(hashTable, top5, textList);
+            return tableAndList;
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex + ""
                     + "\nNo se ha encontrado el archivo o el archivo no tiene el formato correspondiente, por lo que se iniciara la aplicación sin informacion previa.",
                     "ADVERTENCIA!!!", JOptionPane.WARNING_MESSAGE);
         }
-        
+        return null;
     }
 }

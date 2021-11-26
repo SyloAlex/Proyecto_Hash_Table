@@ -1,4 +1,4 @@
-package classes;
+package HashTable;
 
 public class HashTable {
     
@@ -19,22 +19,35 @@ public class HashTable {
         }
     }
     
-    public String printTable(){
-        String str = "";
+    public void printTable(){
         for (int i = 0; i < this.size; i++){
             HashNode aux = this.table[i];
             if (aux != null){
-                str+= "Position: " + i + "\n" + 
-                        "------------------\n";
+                System.out.println("Position: " + i + "\n" + 
+                        "------------------");
                 while (aux != null){
-                    str += "Word: " + aux.getWord() + 
-                            ". Count: " + aux.getCount()+ "\n";
+                    System.out.println("Word: " + aux.getWord() + 
+                            ". Count: " + aux.getCount());
                     aux = aux.getNext();
                 }
-                str += ">>>>>>>>>>>>>>>>>>>\n\n";
+                System.out.println(">>>>>>>>>>>>>>>>>>>");
             }
         }
-        return str;
+    }
+    
+    public String showTable(){
+        String table = "";
+        for (int i = 0; i < this.size; i++){
+            HashNode aux = this.table[i];
+            if (aux != null){
+                while (aux != null){
+                    table += "Word: " + aux.getWord() + 
+                            ". Count: " + aux.getCount() + "\n";
+                    aux = aux.getNext();
+                }
+            }
+        }
+        return table;
     }
     
     public int hashing(String word){
@@ -56,7 +69,7 @@ public class HashTable {
         return (value % this.size);
     }
     
-    public void hashFunction(String word){
+    public HashNode hashFunction(String word){
         int position = this.hashing(word);
         boolean exist = false;
         if (this.table[position] != null){
@@ -80,9 +93,11 @@ public class HashTable {
             } else{
                 aux.setCount(aux.getCount() + 1);
             }
+            return aux;
         } else{
             HashNode newWord = new HashNode(word);
             this.table[position] = newWord;
+            return newWord;
         }
     }
     

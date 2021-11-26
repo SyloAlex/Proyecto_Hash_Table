@@ -12,7 +12,7 @@ package textList;
 public class TextList {
     TextNode first;
     TextNode last;
-    int length;
+    public int length;
     
     public TextList(){
         first = null;
