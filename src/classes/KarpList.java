@@ -114,6 +114,7 @@ public class KarpList {
         KarpNode aux = this.first;
         for (int i = 0; i < this.size; i++){
             result += aux.getTitle() + ",";
+            aux = aux.getNext();
         }
         return result.substring(0, result.length() - 1);
     }

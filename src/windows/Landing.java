@@ -219,6 +219,7 @@ public class Landing extends javax.swing.JFrame {
             this.setKarpList(tl.getKarpList());
             this.jTextArea1.setText(this.table.showTable());
             this.jTextArea2.setText(this.top5.showList());
+            this.jTextField1.setText("");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -3,6 +3,7 @@ package classes;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import javax.swing.JOptionPane;
 
 public class Functions {
     
@@ -63,7 +64,9 @@ public class Functions {
                     }
                 }
                 KarpNode txtNode = new KarpNode(txt);
-                txtNode.setTitle("Texto #" + (karpList.getSize() + 1));
+                String title = JOptionPane.showInputDialog("Ingrese el título "
+                        + "del texto:");
+                txtNode.setTitle(title);
                 karpList.addLast(txtNode);
                 String[] txtInfo = txt.split("\n");
                 for (int i = 0; i < txtInfo.length; i++){
