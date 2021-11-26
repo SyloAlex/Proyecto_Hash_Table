@@ -6,6 +6,7 @@
 package interfaces;
 
 import RabinKarp.RabinKarp;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,14 +18,14 @@ public class Karp extends javax.swing.JFrame {
     /**
      * Creates new form Karp
      */
-    private Landing landingWindow;
+    private LandingWindow landingWindow;
     
     public Karp() {
         this.landingWindow = null;
         initComponents();
     }
     
-    public Karp(Landing landingWindow) {
+    public Karp(LandingWindow landingWindow) {
         this.landingWindow = landingWindow;
         initComponents();
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -90,14 +91,24 @@ public class Karp extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Seleccione el texto:");
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Verificar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jTextArea3.setEditable(false);
         jTextArea3.setColumns(20);
         jTextArea3.setLineWrap(true);
         jTextArea3.setRows(5);
@@ -193,6 +204,14 @@ public class Karp extends javax.swing.JFrame {
 //        RabinKarp rk = new RabinKarp();
 //        String rkResult = rk.rabinKarp(text, segment)
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        this.jButton1.setBackground(new Color(204,255,153));
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        this.jButton1.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_jButton1MouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
