@@ -46,8 +46,7 @@ public class TextList {
     }
     
     public String viewList(){
-        TextNode aux = new TextNode();
-        aux = first;
+        TextNode aux = this.first;
         String str = "";
         while(aux != null){
             str += aux.title + ",";
@@ -57,8 +56,7 @@ public class TextList {
     }
     
     public String getTitles(){
-        TextNode aux = new TextNode();
-        aux = first;
+        TextNode aux = this.first;
         
         String titleList = "";
         
@@ -75,8 +73,7 @@ public class TextList {
     }
     
     public TextNode search(String title){
-        TextNode aux = new TextNode();
-        aux = first;
+        TextNode aux = this.first;
         while(aux != null){
             if (aux.title.equals(title)){
                  return aux;
