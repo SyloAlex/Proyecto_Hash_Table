@@ -190,4 +190,31 @@ public class Top5List {
         return top5;
     }
     
+    public void sortMaxMin(){
+        HashNode aux;
+        if (size > 0){
+            if (first.getNextList() != null){
+                HashNode ant = first;
+                HashNode next = first.getNextList();
+                while (next != null){
+                    if (ant.getCount() < next.getCount()){
+                        aux = next;
+                        next = ant;
+                        ant = aux;
+                        if(next == first.getNextList()){
+                            ant = next;
+                            next = next.getNextList();
+                        } else {
+                            ant = first;
+                            next = first.getNextList();
+                        }
+                    } else {
+                        ant = next;
+                        next = next.getNextList();
+                    }
+                }
+            }
+        }
+    }
+    
 }
