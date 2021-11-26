@@ -191,16 +191,29 @@ public class Top5List {
     }
     
     public void sortMaxMin(){
-        HashNode aux;
+        String auxWord;
+        int auxCounter;
+        HashNode auxNext;
         if (size > 0){
             if (first.getNextList() != null){
                 HashNode ant = first;
                 HashNode next = first.getNextList();
                 while (next != null){
                     if (ant.getCount() < next.getCount()){
-                        aux = next;
-                        next = ant;
-                        ant = aux;
+                        auxWord = next.getWord();
+                        auxCounter = next.getCount();
+                        auxNext = next.getNext();
+                        
+                        next.setWord(ant.getWord());
+                        next.setCount(ant.getCount());
+                        next.setNext(ant.getNext());
+                        
+                        ant.setWord(auxWord);
+                        ant.setCount(auxCounter);
+                        ant.setNext(auxNext);
+//                        aux = next;
+//                        next = ant;
+//                        ant = aux;
                         if(next == first.getNextList()){
                             ant = next;
                             next = next.getNextList();
