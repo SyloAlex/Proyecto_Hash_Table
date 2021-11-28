@@ -56,7 +56,9 @@ public class TxtReader {
                 }
                     
             }
-            top5.sortList();
+            if (top5.getSize() == 5){
+                top5.sortList();
+            }
             TableAndList tableAndList = new TableAndList(hashTable, top5, textList);
             return tableAndList;
         } catch (IOException ex) {
