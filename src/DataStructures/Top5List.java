@@ -213,7 +213,7 @@ public class Top5List {
             HashNode last = null;
             HashNode next = first.getNextList();
             change = false;
-            for (int i = 0; i < this.getSize(); i++){
+            for (int i = 0; i < this.getSize() - 1; i++){
                 if (actual.getCount() < next.getCount()) {
                     change = true;
                     if ( last != null ) {
