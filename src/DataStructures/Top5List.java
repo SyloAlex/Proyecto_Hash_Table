@@ -216,7 +216,7 @@ public class Top5List {
                 while (next != null){
                     if (ant.getCount() < next.getCount()){
                         if (ant == first){
-                            ant.setNextList(next.getNext());
+                            ant.setNextList(next.getNextList());
                             next.setNextList(ant);
                             
                             first = next;
@@ -229,7 +229,7 @@ public class Top5List {
                                 next = first.getNextList();
                             }
                         } else {
-                            ant.setNextList(next.getNext());
+                            ant.setNextList(next.getNextList());
                             next.setNextList(ant);
                             
                             if(next == first.getNextList()){
