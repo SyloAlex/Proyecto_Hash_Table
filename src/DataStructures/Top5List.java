@@ -1,4 +1,4 @@
-package HashTable;
+package DataStructures;
 
 public class Top5List {
     
@@ -188,6 +188,73 @@ public class Top5List {
         }
         
         return top5;
+    }
+    
+    public boolean checkOrder(){
+        boolean flag = true;
+        HashNode aux = this.first;
+        for (int i = 0; i < this.size - 1; i++){
+            if (aux.getCount() < aux.getNextList().getCount()){
+                flag = false;
+                break;
+            }else{
+                aux = aux.getNextList();
+            }
+        }
+        
+        return flag;
+    }
+    
+    public void sortList(){
+        while (!this.checkOrder()){
+            HashNode actual = this.first;
+            HashNode nextNode = this.first.getNextList();
+            for (int i = 0; i < 4; i++){
+                if (nextNode != null){
+                    if (i == 0){
+                        if (actual.getCount() < nextNode.getCount()){
+                            HashNode aux = new HashNode();
+                            aux.setNextList(nextNode);
+                            actual.setNextList(nextNode.getNextList());
+                            nextNode.setNextList(actual);
+                            this.first = nextNode;
+                            aux = null;
+                            break;
+                        }
+                    } else if (i == 1){
+                        if (actual.getCount() < nextNode.getCount()){
+                            HashNode aux = new HashNode();
+                            aux.setNextList(nextNode);
+                            actual.setNextList(nextNode.getNextList());
+                            nextNode.setNextList(actual);
+                            this.first.setNextList(nextNode);
+                            aux = null;
+                            break;
+                        }
+                    } else if (i == 2){
+                        if (actual.getCount() < nextNode.getCount()){
+                            HashNode aux = new HashNode();
+                            aux.setNextList(nextNode);
+                            actual.setNextList(nextNode.getNextList());
+                            nextNode.setNextList(actual);
+                            this.first.getNextList().setNextList(nextNode);
+                            aux = null;
+                            break;
+                        }
+                    }else if (i == 3){
+                        if (actual.getCount() < nextNode.getCount()){
+                            nextNode.setNextList(actual);
+                            this.first.getNextList().getNextList().setNextList(nextNode);
+                            actual.setNextList(null);
+                            this.last = actual;
+                            break;
+                        }
+                    }
+                    nextNode = nextNode.getNextList();
+                    actual = actual.getNextList();
+                }
+            }
+        }
     }
     
     public void sortMaxMin(){

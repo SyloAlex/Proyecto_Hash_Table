@@ -5,10 +5,10 @@
  */
 package interfaces;
 
-import HashTable.HashNode;
-import HashTable.HashTable;
-import HashTable.TableAndList;
-import HashTable.Top5List;
+import DataStructures.HashNode;
+import DataStructures.HashTable;
+import DataStructures.TableAndList;
+import DataStructures.Top5List;
 import TxtReader.TxtReader;
 import java.awt.Color;
 import java.io.File;

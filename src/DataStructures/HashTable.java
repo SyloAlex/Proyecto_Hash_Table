@@ -1,4 +1,4 @@
-package HashTable;
+package DataStructures;
 
 public class HashTable {
     

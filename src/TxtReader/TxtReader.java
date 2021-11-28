@@ -5,16 +5,14 @@
  */
 package TxtReader;
 
-import HashTable.HashNode;
-import HashTable.HashTable;
-import HashTable.TableAndList;
-import HashTable.Top5List;
+import DataStructures.HashNode;
+import DataStructures.HashTable;
+import DataStructures.TableAndList;
+import DataStructures.Top5List;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import textList.TextList;
 
@@ -58,7 +56,7 @@ public class TxtReader {
                 }
                     
             }
-            //top5.sortMaxMin();
+            top5.sortList();
             TableAndList tableAndList = new TableAndList(hashTable, top5, textList);
             return tableAndList;
         } catch (IOException ex) {
