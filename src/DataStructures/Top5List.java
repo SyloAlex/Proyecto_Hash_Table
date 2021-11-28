@@ -205,96 +205,38 @@ public class Top5List {
         return flag;
     }
     
-    public void sortList(){
-        while (!this.checkOrder()){
-            HashNode actual = this.first;
-            HashNode nextNode = this.first.getNextList();
-            for (int i = 0; i < 4; i++){
-                if (nextNode != null){
-                    if (i == 0){
-                        if (actual.getCount() < nextNode.getCount()){
-                            HashNode aux = new HashNode();
-                            aux.setNextList(nextNode);
-                            actual.setNextList(nextNode.getNextList());
-                            nextNode.setNextList(actual);
-                            this.first = nextNode;
-                            aux = null;
-                            break;
-                        }
-                    } else if (i == 1){
-                        if (actual.getCount() < nextNode.getCount()){
-                            HashNode aux = new HashNode();
-                            aux.setNextList(nextNode);
-                            actual.setNextList(nextNode.getNextList());
-                            nextNode.setNextList(actual);
-                            this.first.setNextList(nextNode);
-                            aux = null;
-                            break;
-                        }
-                    } else if (i == 2){
-                        if (actual.getCount() < nextNode.getCount()){
-                            HashNode aux = new HashNode();
-                            aux.setNextList(nextNode);
-                            actual.setNextList(nextNode.getNextList());
-                            nextNode.setNextList(actual);
-                            this.first.getNextList().setNextList(nextNode);
-                            aux = null;
-                            break;
-                        }
-                    }else if (i == 3){
-                        if (actual.getCount() < nextNode.getCount()){
-                            nextNode.setNextList(actual);
-                            this.first.getNextList().getNextList().setNextList(nextNode);
-                            actual.setNextList(null);
-                            this.last = actual;
-                            break;
-                        }
-                    }
-                    nextNode = nextNode.getNextList();
-                    actual = actual.getNextList();
-                }
-            }
-        }
-    }
-    
     public void sortMaxMin(){
-        String auxWord;
-        int auxCounter;
-        HashNode auxNext;
-        if (size > 0){
-            if (first.getNextList() != null){
-                HashNode ant = first;
-                HashNode next = first.getNextList();
-                while (next != null){
-                    if (ant.getCount() < next.getCount()){
-                        auxWord = next.getWord();
-                        auxCounter = next.getCount();
-                        auxNext = next.getNext();
-                        
-                        next.setWord(ant.getWord());
-                        next.setCount(ant.getCount());
-                        next.setNext(ant.getNext());
-                        
-                        ant.setWord(auxWord);
-                        ant.setCount(auxCounter);
-                        ant.setNext(auxNext);
-//                        aux = next;
-//                        next = ant;
-//                        ant = aux;
-                        if(next == first.getNextList()){
-                            ant = next;
-                            next = next.getNextList();
-                        } else {
-                            ant = first;
-                            next = first.getNextList();
-                        }
+        if (size > 1) {
+        boolean change;
+        do {
+            HashNode actual = first;
+            HashNode last = null;
+            HashNode next = first.getNextList();
+            change = false;
+            for (int i = 0; i < this.getSize() - 1; i++){
+                if (actual.getCount() < next.getCount()) {
+                    change = true;
+                    if ( last != null ) {
+                        HashNode aux = next.getNextList();
+                        last.setNextList(next);
+                        next.setNextList(actual);
+                        actual.setNextList(aux);
                     } else {
-                        ant = next;
-                        next = next.getNextList();
+                        HashNode aux = next.getNextList();
+                        first = next;
+                        next.setNextList(actual);
+                        actual.setNextList(aux);
                     }
+                    last = next;
+                    next = actual.getNextList();
+                } else { 
+                    last = actual;
+                    actual = next;
+                    next = next.getNextList();
                 }
-            }
-        }
+            } 
+        } while(change);
     }
+}
     
 }

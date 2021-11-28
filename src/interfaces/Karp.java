@@ -130,7 +130,7 @@ public class Karp extends javax.swing.JFrame {
         jScrollPane5.setViewportView(jList2);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("Si el segmento se encuentra en el texto, podrá encontrarlo en mayúsculas");
+        jLabel4.setText("Si el segmento se encuentra en el texto, podrá encontrarlo todo en mayúsculas");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
