@@ -205,58 +205,6 @@ public class Top5List {
         return flag;
     }
     
-    public void sortList(){
-        while (!this.checkOrder()){
-            HashNode actual = this.first;
-            HashNode nextNode = this.first.getNextList();
-            for (int i = 0; i < 4; i++){
-                if (nextNode != null){
-                    if (i == 0){
-                        if (actual.getCount() < nextNode.getCount()){
-                            HashNode aux = new HashNode();
-                            aux.setNextList(nextNode);
-                            actual.setNextList(nextNode.getNextList());
-                            nextNode.setNextList(actual);
-                            this.first = nextNode;
-                            aux = null;
-                            break;
-                        }
-                    } else if (i == 1){
-                        if (actual.getCount() < nextNode.getCount()){
-                            HashNode aux = new HashNode();
-                            aux.setNextList(nextNode);
-                            actual.setNextList(nextNode.getNextList());
-                            nextNode.setNextList(actual);
-                            this.first.setNextList(nextNode);
-                            aux = null;
-                            break;
-                        }
-                    } else if (i == 2){
-                        if (actual.getCount() < nextNode.getCount()){
-                            HashNode aux = new HashNode();
-                            aux.setNextList(nextNode);
-                            actual.setNextList(nextNode.getNextList());
-                            nextNode.setNextList(actual);
-                            this.first.getNextList().setNextList(nextNode);
-                            aux = null;
-                            break;
-                        }
-                    }else if (i == 3){
-                        if (actual.getCount() < nextNode.getCount()){
-                            nextNode.setNextList(actual);
-                            this.first.getNextList().getNextList().setNextList(nextNode);
-                            actual.setNextList(null);
-                            this.last = actual;
-                            break;
-                        }
-                    }
-                    nextNode = nextNode.getNextList();
-                    actual = actual.getNextList();
-                }
-            }
-        }
-    }
-    
     public void sortMaxMin(){
         String auxWord;
         int auxCounter;
@@ -267,27 +215,32 @@ public class Top5List {
                 HashNode next = first.getNextList();
                 while (next != null){
                     if (ant.getCount() < next.getCount()){
-                        auxWord = next.getWord();
-                        auxCounter = next.getCount();
-                        auxNext = next.getNext();
-                        
-                        next.setWord(ant.getWord());
-                        next.setCount(ant.getCount());
-                        next.setNext(ant.getNext());
-                        
-                        ant.setWord(auxWord);
-                        ant.setCount(auxCounter);
-                        ant.setNext(auxNext);
-//                        aux = next;
-//                        next = ant;
-//                        ant = aux;
-                        if(next == first.getNextList()){
-                            ant = next;
-                            next = next.getNextList();
+                        if (ant == first){
+                            ant.setNextList(next.getNext());
+                            next.setNextList(ant);
+                            
+                            first = next;
+                            
+                            if(next == first.getNextList()){
+                                ant = next;
+                                next = next.getNextList();
+                            } else {
+                                ant = first;
+                                next = first.getNextList();
+                            }
                         } else {
-                            ant = first;
-                            next = first.getNextList();
-                        }
+                            ant.setNextList(next.getNext());
+                            next.setNextList(ant);
+                            
+                            if(next == first.getNextList()){
+                                ant = next;
+                                next = next.getNextList();
+                            } else {
+                                ant = first;
+                                next = first.getNextList();
+                            }
+                        }  
+                        
                     } else {
                         ant = next;
                         next = next.getNextList();
