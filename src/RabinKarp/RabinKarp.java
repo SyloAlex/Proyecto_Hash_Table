@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package RabinKarp;
 
 import javax.swing.JOptionPane;
@@ -12,6 +7,12 @@ import javax.swing.JOptionPane;
  * @author luism
  */
 public class RabinKarp {
+
+    /**
+     * Función que recorre el texto, verificando que el segmento pasado por 
+     * parámetro se encuentre incluido en el texto. de ser así, modifica el 
+     * texto pasando a mayúsculas todo el segmento encontrado
+     */
     public final static int d = 256;
     
     static String search(String segment, String text, int q)
@@ -59,6 +60,13 @@ public class RabinKarp {
         return modifiedText;
     }
     
+    /**
+     * Función que ejecuta la búsqueda del segmento dentro del texto pasado 
+     * por parámetros.
+     * @param text (String) texto a revisar
+     * @param segment (String) segmento a buscar en el texto
+     * @return (String) con el texto modificado si se encontró el segmento.
+     */
     public String rabinKarp(String text, String segment)
     {
         int q = 101; 

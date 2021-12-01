@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package textList;
 
 /**
- *
- * @author luism
+ * Nodo de la lista TextList. text es el texto cargado por el usuario, title es 
+ * el titulo otorgado por el cliente al texto y next es el apuntador al 
+ * siguiente nodo de la lista
  */
 public class TextNode {
     public String text;

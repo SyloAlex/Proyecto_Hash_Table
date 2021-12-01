@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaces;
 
 import RabinKarp.RabinKarp;
@@ -10,13 +5,13 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Alex
+ * Ventana que permite al usuario verificar si hay plagio entre dos 
+ * archivos cargados.
  */
 public class Karp extends javax.swing.JFrame {
 
     /**
-     * Creates new form Karp
+     * Constructor del JForm Karp si parámetros
      */
     private LandingWindow landingWindow;
     
@@ -25,6 +20,11 @@ public class Karp extends javax.swing.JFrame {
         initComponents();
     }
     
+    /**
+     * Constructor del JForm Karp tomando como parámetro la ventana 
+     * LandingWindow previamente abierta. En el constructor genera las listas 
+     * de los archivos cargados por el usuario en la ventana anterior
+     */
     public Karp(LandingWindow landingWindow) {
         this.landingWindow = landingWindow;
         initComponents();
@@ -195,14 +195,24 @@ public class Karp extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
+            if (this.jTextArea3.getText().length() > 0){
+                this.jTextArea3.setText("");
+            }
             String textTitle = this.jList2.getSelectedValue();
             String segmentTitle = this.jList1.getSelectedValue();
             String text = this.landingWindow.getKarpList().search(textTitle).text;
             String segment = this.landingWindow.getKarpList().search(segmentTitle).text;
             if (text != null && segment != null){
-                RabinKarp rk = new RabinKarp();
-                String rkResult = rk.rabinKarp(text, segment);
-                this.jTextArea3.setText(rkResult);
+                if (text.length() < segment.length()){
+                    JOptionPane.showMessageDialog(rootPane, "El texto "
+                            + "seleccionado es de menor longitud que el "
+                            + "segmento, por lo que no puede analizarse en "
+                            + "busca de plagio");
+                } else{
+                    RabinKarp rk = new RabinKarp();
+                    String rkResult = rk.rabinKarp(text, segment);
+                    this.jTextArea3.setText(rkResult);
+                }
             }
         } catch (Exception e){
             JOptionPane.showMessageDialog(rootPane, "Debe seleccionar el texto "

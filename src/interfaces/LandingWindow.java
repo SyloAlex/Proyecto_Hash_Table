@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaces;
 
 import DataStructures.HashNode;
@@ -18,13 +13,16 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import textList.TextList;
 
 /**
- *
- * @author Alex
+ * Ventana de la plataforma que permite al usuario cargar archivos de texto, 
+ * visualizar la Hash Table, visualizar las 5 palabras con más repeticiones,
+ * buscar palabras en la Hash Table y acceder a la ventana de verificación de 
+ * plagio.
  */
 public class LandingWindow extends javax.swing.JFrame {
 
     /**
-     * Creates new form landing
+     * Contructor del JForm LandingWindow. En el constructor genera una Hash 
+     * Table, una Top5List y una TextList.
      */
     private HashTable table;
     private Top5List top5;
@@ -237,13 +235,19 @@ public class LandingWindow extends javax.swing.JFrame {
                     + "el archivo a cargar");
         }else{
             TxtReader f = new TxtReader();
-            TableAndList tl = f.openFile(pathToFile, this.table ,karpList, top5);
-            this.setTable(tl.getTable());
-            this.setTop5(tl.getTop5());
-            this.setKarpList(tl.getKarpList());
-            this.jTextArea1.setText(this.table.showTable());
-            this.jTextArea2.setText(this.top5.showList());
-            this.jTextField1.setText("");
+            try{
+                TableAndList tl = f.openFile(pathToFile, this.table ,karpList, top5);
+                this.setTable(tl.getTable());
+                this.setTop5(tl.getTop5());
+                this.setKarpList(tl.getKarpList());
+                this.jTextArea1.setText(this.table.showTable());
+                this.jTextArea2.setText(this.top5.showList());
+                this.jTextField1.setText("");
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(rootPane, "El archivo cargado no "
+                        + "pudo ser procesado por la plataforma. Por favor "
+                        + "intente con otro archivo");
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
